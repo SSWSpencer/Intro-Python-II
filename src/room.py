@@ -2,10 +2,11 @@
 # description attributes.
 
 class Room:
-    def __init__(self, key, name, desc):
+    def __init__(self, key, name, desc, items):
         self.key = key
         self.name = name
         self.desc = desc
+        self.items = items
 
     def __str__(self):
         return (f"{self.name} || \"{self.desc}\"")
@@ -30,4 +31,22 @@ class Room:
         return (f"{self.e_to.key}")
     def get_w(self):
         return (f"{self.w_to.key}")
+    
+    def addItem(self, item):
+        self.items.append(item)
+    
+    def getItems(self):
+        output = ""
+        counter = 0
+        for i in self.items:
+            output+= (f"Item {counter}: {i.getName()} || {i.getDesc()}\n")
+            counter += 1
+        return output
+    
+    def getItem(self, index):
+        return self.items[index]
+    
+    def removeItem(self, index):
+        self.items.pop(index)
+    
     
